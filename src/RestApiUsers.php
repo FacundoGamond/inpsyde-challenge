@@ -12,27 +12,27 @@ class RestApiUsers
 {
     public function __construct()
     {
-        add_action('rest_api_init', [$this, 'getAllUsersRoute']);
-        add_action('rest_api_init', [$this, 'getUserDetailRoute']);
+        add_action('rest_api_init', [$this, 'allUsersRoute']);
+        add_action('rest_api_init', [$this, 'userDetailRoute']);
     }
 
     /**
      * Get all Users Data
      */
-    public function getAllUsersRoute()
+    public function allUsersRoute()
     {
         register_rest_route(
             'inpsyde-challenge',
             'get-all-users',
             [
                 'methods' => \WP_REST_SERVER::READABLE,
-                'callback' => [$this, 'getAllUsersResponse'],
+                'callback' => [$this, 'allUsersResponse'],
                 'permission_callback' => '__return_true',
             ]
         );
     }
 
-    public function getAllUsersResponse(): ?WP_REST_Response
+    public function allUsersResponse(): ?WP_REST_Response
     {
         // Get Users
         $client = new Client();
@@ -74,20 +74,20 @@ class RestApiUsers
     /**
      * Get User Detail Data
      */
-    public function getUserDetailRoute()
+    public function userDetailRoute()
     {
         register_rest_route(
             'inpsyde-challenge',
             'get-user-detail',
             [
                 'methods' => \WP_REST_SERVER::READABLE,
-                'callback' => [$this, 'getUserDetailResponse'],
+                'callback' => [$this, 'userDetailResponse'],
                 'permission_callback' => '__return_true',
             ]
         );
     }
 
-    public function getUserDetailResponse(object $data): ?WP_REST_Response
+    public function userDetailResponse(object $data): ?WP_REST_Response
     {
         // Get id param
         $id = $data['id'];
