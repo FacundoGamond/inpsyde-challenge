@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+declare(strict_types=1);
 
 namespace Facundogamond\InpsydeChallenge\Tests;
 
@@ -29,5 +31,3 @@ abstract class SetupMonkey extends TestCase
         parent::tearDown();
     }
 }
-
-?>

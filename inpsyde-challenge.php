@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:disable
 
 /**
  * Plugin Name: Inpsyde Challenge
