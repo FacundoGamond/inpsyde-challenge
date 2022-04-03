@@ -1,3 +1,77 @@
-.inpsyde-challenge{
-    background-color: red;
+.inpsyde-challenge {
+
+    &__title{
+        font-size: 50px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    &__table-wrapper{
+        background-color: white;
+        padding: 30px;
+        border-radius: 30px;
+    }
+
+    &__table-article,
+    &__table-header {
+        display: grid;
+        grid-template-columns: 10% 60% 30%;
+    }
+
+    &__col {
+        border-bottom: 1px solid grey;
+        border-left: 1px solid grey;
+        padding: 20px 10px;
+
+        &:first-child{
+            border-left: initial;
+        }
+    }
+
+    &__username,
+    &__name {
+        border-left: 1px solid grey;
+        border-bottom: 1px solid grey;
+        padding-left: 10px;
+    }
+
+    &__id{
+        padding-left: 10px;
+        border-bottom: 1px solid grey;
+    }
+
+    &__modal{
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        &.show{
+            display: flex;
+        }
+    }
+
+    &__modal-wrapper{
+        max-width: 500px;
+        padding: 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 20px;
+    }
+
+    &__modal-closebtn{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        font-size: 16px;
+    }
 }
