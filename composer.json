@@ -1,0 +1,19 @@
+{
+    "name": "facundogamond/inpsyde-challenge",
+    "description": "Inpsyde challenge code.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Facundogamond\\InpsydeChallenge\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Facundo Gamond"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
