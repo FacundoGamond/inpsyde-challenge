@@ -1,27 +1,50 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Facundogamond\InpsydeChallenge;
 
 class FrontendFeatures
 {
-    function __construct()
+    public function __construct()
     {
-        add_shortcode('inpsyde-challenge', array($this, 'inpsydeChallegeFrontend'));
+        add_shortcode('inpsyde-challenge', [$this, 'inpsydeChallegeFrontend']);
     }
 
-    function inpsydeChallegeFrontend()
+    private function scripts()
     {
         if (!is_admin()) {
-            wp_enqueue_script('inpsyde-challenge-functions', plugins_url('../assets/build/inpsyde-challenge.min.js', __FILE__), array());
-            wp_localize_script('inpsyde-challenge-functions', 'inpsydeChallenge', array(
-                'rootapiurl' => esc_url_raw(rest_url()),
-                'nonce' => wp_create_nonce('wp_rest')
-            ));
-            wp_enqueue_style('inpsyde-challenge-styles', plugins_url('../assets/build/inpsyde-challenge.min.css', __FILE__));
-        } ?>
+            wp_enqueue_script(
+                'inpsyde-challenge-functions',
+                plugins_url('../assets/build/inpsyde-challenge.min.js', __FILE__),
+                null,
+                '1.0',
+                true
+            );
+            wp_localize_script(
+                'inpsyde-challenge-functions',
+                'inpsydeChallenge',
+                [
+                    'rootapiurl' => esc_url_raw(rest_url()),
+                    'nonce' => wp_create_nonce('wp_rest'),
+                ]
+            );
+            wp_enqueue_style(
+                'inpsyde-challenge-styles',
+                plugins_url('../assets/build/inpsyde-challenge.min.css', __FILE__),
+                null,
+                '1.0'
+            );
+        }
+    }
+
+    public function inpsydeChallegeFrontend()
+    {
+        $this->scripts();
+        ?>
 
         <div class="inpsyde-challenge">
-            <h1 class="inpsyde-challenge__title"><?php _e('Users Table', 'inpsydechallenge'); ?></h1>
+            <h1 class="inpsyde-challenge__title"><?php esc_html_e('Users Table', 'inpsydechallenge'); ?></h1>
             <div class="inpsyde-challenge__table-wrapper js-inpsyde-challenge">
                 <div class="inpsyde-challenge__table-header">
                     <span class="inpsyde-challenge__col">ID</span>
@@ -45,7 +68,7 @@ class FrontendFeatures
             </div>
         </div>
 
-<?php
+        <?php
     }
 }
 

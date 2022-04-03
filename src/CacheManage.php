@@ -6,7 +6,7 @@ namespace Facundogamond\InpsydeChallenge;
 
 class CacheManage
 {
-    public static function WPREST(mixed $data): ?mixed
+    public static function WPREST($data)
     {
         $result = new \WP_REST_Response($data, 200);
 

@@ -36,7 +36,7 @@ class InpsydeChallenge {
       button.addEventListener('click', event => {
         event.preventDefault();
         event.stopPropagation();
-        const id = button.getAttribute('href');
+        const id = button.getAttribute('data-id');
         this.getUserDetail(id)
       })
     });
