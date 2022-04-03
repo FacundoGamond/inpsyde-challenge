@@ -1,5 +1,5 @@
 {
-  "name": "Instagram-Feed-Builder",
+  "name": "Inpsyde-Challenge-Assets-Builder",
   "version": "2.0.0",
   "description": "Webpack assets builder",
   "main": "webpack.config.js",
@@ -35,7 +35,6 @@
     "mini-css-extract-plugin": "^2.4.6",
     "natives": "^1.1.6",
     "sass": "^1.47.0",
-    "swiper": "^8.0.6",
     "webpack": "^5.66.0"
   }
 }
