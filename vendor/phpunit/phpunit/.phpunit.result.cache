@@ -1,0 +1,1 @@
+{"version":1,"defects":[],"times":{"Testing::example":0.013,"PruebaTest::example":0.011,"Facundogamond\\InpsydeChallenge\\Tests\\CheckTest::testHooks":0.03,"Facundogamond\\InpsydeChallenge\\Tests\\Unit\\CustomEndpointsTest::testHooks":0.028,"Facundogamond\\InpsydeChallenge\\Tests\\CustomEndpointsTest::testHooks":0.028}}

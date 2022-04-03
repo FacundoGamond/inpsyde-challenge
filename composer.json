@@ -8,6 +8,11 @@
             "Facundogamond\\InpsydeChallenge\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Facundogamond\\InpsydeChallenge\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Facundo Gamond"
@@ -17,7 +22,9 @@
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
-        "inpsyde/php-coding-standards": "^1.0"
+        "inpsyde/php-coding-standards": "^1.0",
+        "brain/monkey": "~2.0.0",
+        "phpunit/phpunit": "^9.5"
     },
     "config": {
         "allow-plugins": {
