@@ -14,10 +14,18 @@ class ComposerStaticInit6901f1b4d9de45315e1562d478599fd5
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'VariableAnalysis\\' => 17,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+        ),
+        'N' => 
+        array (
+            'NeutronStandard\\' => 16,
         ),
         'G' => 
         array (
@@ -29,17 +37,29 @@ class ComposerStaticInit6901f1b4d9de45315e1562d478599fd5
         array (
             'Facundogamond\\InpsydeChallenge\\' => 31,
         ),
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'VariableAnalysis\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sirbrillig/phpcs-variable-analysis/VariableAnalysis',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'NeutronStandard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/automattic/phpcs-neutron-standard/NeutronStandard',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -56,6 +76,10 @@ class ComposerStaticInit6901f1b4d9de45315e1562d478599fd5
         'Facundogamond\\InpsydeChallenge\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
         ),
     );
 

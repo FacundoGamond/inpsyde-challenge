@@ -15,5 +15,13 @@
     ],
     "require": {
         "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "inpsyde/php-coding-standards": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

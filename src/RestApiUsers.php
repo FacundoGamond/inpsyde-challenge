@@ -1,16 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Facundogamond\InpsydeChallenge;
 
 use GuzzleHttp\Client;
 use Facundogamond\InpsydeChallenge\CacheManage;
+use WP_REST_Response;
 
 class RestApiUsers
 {
-    function __construct()
+    public function __construct()
     {
-        add_action('rest_api_init', array($this, 'getAllUsersRoute'));
-        add_action('rest_api_init', array($this, 'getUserDetailRoute'));
+        add_action('rest_api_init', [$this, 'getAllUsersRoute']);
+        add_action('rest_api_init', [$this, 'getUserDetailRoute']);
     }
 
     /**
@@ -18,14 +21,18 @@ class RestApiUsers
      */
     public function getAllUsersRoute()
     {
-        register_rest_route('inpsyde-challenge', 'get-all-users', array(
-            'methods' => \WP_REST_SERVER::READABLE,
-            'callback' => array($this, 'getAllUsersResponse'),
-            'permission_callback' => '__return_true'
-        ));
+        register_rest_route(
+            'inpsyde-challenge',
+            'get-all-users',
+            [
+                'methods' => \WP_REST_SERVER::READABLE,
+                'callback' => [$this, 'getAllUsersResponse'],
+                'permission_callback' => '__return_true',
+            ]
+        );
     }
 
-    public function getAllUsersResponse()
+    public function getAllUsersResponse(): ?WP_REST_Response
     {
         // Get Users
         $client = new Client();
@@ -35,51 +42,58 @@ class RestApiUsers
         return CacheManage::WPREST($this->buildTableGrid($users));
     }
 
-    protected function buildTableGrid($users)
+    protected function buildTableGrid(array $users): ?string
     {
         ob_start();
-?>
+        ?>
         <div class="inpsyde-challenge__table">
             <?php foreach ($users as $user) : ?>
                 <article class="inpsyde-challenge__table-article">
-                    <a class="inpsyde-challenge__id" href="<?php echo esc_attr($user['id']) ?>">
+                    <a class="inpsyde-challenge__id"
+                        href="<?php echo esc_url($user['id']); ?>">                        
                         <?php echo esc_html($user['id']) ?>
                     </a>
-                    <a class="inpsyde-challenge__name" href="<?php echo esc_attr($user['id']) ?>">
+                    <a class="inpsyde-challenge__name"
+                        href="<?php echo esc_url($user['id']); ?>">
                         <?php echo esc_html($user['name']); ?>
                     </a>
-                    <a class="inpsyde-challenge__username" href="<?php echo esc_attr($user['id']) ?>">
+                    <a class="inpsyde-challenge__username"
+                        href="<?php echo esc_url($user['id']); ?>">
                         <?php echo esc_html($user['username']); ?>
                     </a>
                 </article>
 
-    <?php
+                <?php
             endforeach;
             return ob_get_clean();
-        }
-
-        /**
-         * Get User Detail Data
-         */
-        public function getUserDetailRoute()
-        {
-            register_rest_route('inpsyde-challenge', 'get-user-detail', array(
-                'methods' => \WP_REST_SERVER::READABLE,
-                'callback' => array($this, 'getUserDetailResponse'),
-                'permission_callback' => '__return_true'
-            ));
-        }
-
-        public function getUserDetailResponse($data)
-        {
-            // Get id param
-            $id = $data['id'];
-
-            // Get user data
-            $client = new Client();
-            $response = $client->get("https://jsonplaceholder.typicode.com/users/{$id}");
-            $userDetails = json_decode((string) $response->getBody(), true);
-            
-            return CacheManage::WPREST($userDetails);
-        }
     }
+
+    /**
+     * Get User Detail Data
+     */
+    public function getUserDetailRoute()
+    {
+        register_rest_route(
+            'inpsyde-challenge',
+            'get-user-detail',
+            [
+                'methods' => \WP_REST_SERVER::READABLE,
+                'callback' => [$this, 'getUserDetailResponse'],
+                'permission_callback' => '__return_true',
+            ]
+        );
+    }
+
+    public function getUserDetailResponse(array $data): ?WP_REST_Response
+    {
+        // Get id param
+        $id = $data['id'];
+
+        // Get user data
+        $client = new Client();
+        $response = $client->get("https://jsonplaceholder.typicode.com/users/{$id}");
+        $userDetails = json_decode((string) $response->getBody(), true);
+
+        return CacheManage::WPREST($userDetails);
+    }
+}
