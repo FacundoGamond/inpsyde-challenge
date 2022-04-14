@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+
+/**
+ * The template for displaying all users
+ */
+
+get_header(); ?>
 
 <section class="inpsyde-challenge">
     <h1 class="inpsyde-challenge__title"><?php esc_html_e('Users Table', 'inpsydechallenge'); ?></h1>

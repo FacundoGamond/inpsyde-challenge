@@ -31,14 +31,14 @@ class RestApiUsers
         );
     }
 
-    public function allUsersResponse(): ?WP_REST_Response
+    public function allUsersResponse()/*: ?WP_REST_Response*/
     {
         $request = wp_remote_get('https://jsonplaceholder.typicode.com/users');
         $response = $request['response'];
         $body = json_decode((string) $request['body'], true);
 
         if ($response['code'] != 200) {
-            return CacheManage::WPREST($response);
+            return new \WP_Error(__('Error', 'inpsydechallenge'), __($response['message'], 'inpsydechallenge'), ['status' => $response['code']]);
         }
 
         return CacheManage::WPREST($this->buildTableGrid($body));
@@ -70,15 +70,15 @@ class RestApiUsers
         );
     }
 
-    public function userDetailResponse(object $data): ?WP_REST_Response
+    public function userDetailResponse(object $data)/*: ?WP_REST_Response*/
     {
-        $id = $data['id'];
+        $id = $data->get_params()['id'];
         $request = wp_remote_get("https://jsonplaceholder.typicode.com/users/{$id}");
         $response = $request['response'];
         $body = json_decode((string) $request['body'], true);
 
         if ($response['code'] != 200) {
-            return CacheManage::WPREST($response);
+            return new \WP_Error(__('Error', 'inpsydechallenge'), __($response['message'], 'inpsydechallenge'), ['status' => $response['code']]);
         }
 
         return CacheManage::WPREST($body);
