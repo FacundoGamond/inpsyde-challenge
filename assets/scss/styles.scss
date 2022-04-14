@@ -1,18 +1,27 @@
 .inpsyde-challenge {
-max-width: 1200px;
-padding: 0 30px;
-margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 30px;
+    margin: 0 auto;
 
-    &__title{
+    @media (max-width: 992px) {
+        padding: 0 15px;
+    }
+
+    &__title {
         font-size: 50px;
         margin-bottom: 30px;
         text-align: center;
     }
 
-    &__table-wrapper{
+    &__table-wrapper {
         background-color: white;
         padding: 30px;
         border-radius: 30px;
+
+        @media (max-width: 992px) {
+            padding: 10px;
+            border-radius: 10px;
+        }
     }
 
     &__table-article,
@@ -26,7 +35,7 @@ margin: 0 auto;
         border-left: 1px solid grey;
         padding: 20px 10px;
 
-        &:first-child{
+        &:first-child {
             border-left: initial;
         }
     }
@@ -36,14 +45,25 @@ margin: 0 auto;
         border-left: 1px solid grey;
         border-bottom: 1px solid grey;
         padding-left: 10px;
+        word-break: break-all;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
     }
 
-    &__id{
+    &__id {
         padding-left: 10px;
         border-bottom: 1px solid grey;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
     }
 
-    &__modal{
+    &__modal {
         background-color: rgba(0, 0, 0, 0.5);
         position: fixed;
         top: 0;
@@ -55,12 +75,12 @@ margin: 0 auto;
         justify-content: center;
         align-items: center;
 
-        &.show{
+        &.show {
             display: flex;
         }
     }
 
-    &__modal-wrapper{
+    &__modal-wrapper {
         max-width: 500px;
         padding: 30px;
         background-color: white;
@@ -68,7 +88,7 @@ margin: 0 auto;
         border-radius: 20px;
     }
 
-    &__modal-closebtn{
+    &__modal-closebtn {
         position: absolute;
         right: 10px;
         top: 10px;

@@ -6,6 +6,11 @@
   padding: 0 30px;
   margin: 0 auto;
 }
+@media (max-width: 992px) {
+  .inpsyde-challenge {
+    padding: 0 15px;
+  }
+}
 .inpsyde-challenge__title {
   font-size: 50px;
   margin-bottom: 30px;
@@ -15,6 +20,12 @@
   background-color: white;
   padding: 30px;
   border-radius: 30px;
+}
+@media (max-width: 992px) {
+  .inpsyde-challenge__table-wrapper {
+    padding: 10px;
+    border-radius: 10px;
+  }
 }
 .inpsyde-challenge__table-article, .inpsyde-challenge__table-header {
   display: grid;
@@ -32,10 +43,19 @@
   border-left: 1px solid grey;
   border-bottom: 1px solid grey;
   padding-left: 10px;
+  word-break: break-all;
+  text-decoration: none;
+}
+.inpsyde-challenge__username:hover, .inpsyde-challenge__name:hover {
+  text-decoration: underline;
 }
 .inpsyde-challenge__id {
   padding-left: 10px;
   border-bottom: 1px solid grey;
+  text-decoration: none;
+}
+.inpsyde-challenge__id:hover {
+  text-decoration: underline;
 }
 .inpsyde-challenge__modal {
   background-color: rgba(0, 0, 0, 0.5);
