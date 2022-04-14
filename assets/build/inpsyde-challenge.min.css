@@ -1,1 +1,72 @@
-.inpsyde-challenge__title{font-size:50px;margin-bottom:30px;text-align:center}.inpsyde-challenge__table-wrapper{background-color:#fff;border-radius:30px;padding:30px}.inpsyde-challenge__table-article,.inpsyde-challenge__table-header{display:grid;grid-template-columns:10% 60% 30%}.inpsyde-challenge__col{border-bottom:1px solid gray;border-left:1px solid gray;padding:20px 10px}.inpsyde-challenge__col:first-child{border-left:initial}.inpsyde-challenge__name,.inpsyde-challenge__username{border-bottom:1px solid gray;border-left:1px solid gray;padding-left:10px}.inpsyde-challenge__id{border-bottom:1px solid gray;padding-left:10px}.inpsyde-challenge__modal{align-items:center;background-color:rgba(0,0,0,.5);display:none;height:100%;justify-content:center;left:0;position:fixed;top:0;width:100%;z-index:100}.inpsyde-challenge__modal.show{display:flex}.inpsyde-challenge__modal-wrapper{background-color:#fff;border-radius:20px;max-width:500px;padding:30px;position:relative}.inpsyde-challenge__modal-closebtn{border:1px solid #000;border-radius:10px;font-size:16px;padding:5px;position:absolute;right:10px;top:10px}
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/scss/styles.scss ***!
+  \****************************************************************************************************************************************************************************************/
+.inpsyde-challenge {
+  max-width: 1200px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+.inpsyde-challenge__title {
+  font-size: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.inpsyde-challenge__table-wrapper {
+  background-color: white;
+  padding: 30px;
+  border-radius: 30px;
+}
+.inpsyde-challenge__table-article, .inpsyde-challenge__table-header {
+  display: grid;
+  grid-template-columns: 10% 60% 30%;
+}
+.inpsyde-challenge__col {
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  padding: 20px 10px;
+}
+.inpsyde-challenge__col:first-child {
+  border-left: initial;
+}
+.inpsyde-challenge__username, .inpsyde-challenge__name {
+  border-left: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-left: 10px;
+}
+.inpsyde-challenge__id {
+  padding-left: 10px;
+  border-bottom: 1px solid grey;
+}
+.inpsyde-challenge__modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.inpsyde-challenge__modal.show {
+  display: flex;
+}
+.inpsyde-challenge__modal-wrapper {
+  max-width: 500px;
+  padding: 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 20px;
+}
+.inpsyde-challenge__modal-closebtn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+/*# sourceMappingURL=inpsyde-challenge.min.css.map*/

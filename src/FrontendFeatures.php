@@ -8,68 +8,71 @@ class FrontendFeatures
 {
     public function __construct()
     {
-        add_shortcode('inpsyde-challenge', [$this, 'inpsydeChallegeFrontend']);
+        add_action('init', [$this, 'rewriteRules']);
+        add_filter('query_vars', [$this, 'queryVars']);
+        add_action('template_include', [$this, 'setTemplate']);
     }
 
-    private function scripts()
+    /**
+     * Register Rewrite Rules
+     */
+    public function rewriteRules()
     {
-        if (!is_admin()) {
-            wp_enqueue_script(
-                'inpsyde-challenge-functions',
-                plugins_url('../assets/build/inpsyde-challenge.min.js', __FILE__),
-                null,
-                '1.0',
-                true
-            );
-            wp_localize_script(
-                'inpsyde-challenge-functions',
-                'inpsydeChallenge',
-                [
-                    'rootapiurl' => esc_url_raw(rest_url()),
-                    'nonce' => wp_create_nonce('wp_rest'),
-                ]
-            );
-            wp_enqueue_style(
-                'inpsyde-challenge-styles',
-                plugins_url('../assets/build/inpsyde-challenge.min.css', __FILE__),
-                null,
-                '1.0'
-            );
+        add_rewrite_rule('users/?$', 'index.php?my_page=user', 'top');
+        flush_rewrite_rules();
+    }
+
+    /**
+     * Adding query vars
+     */
+    public function queryVars($queryVars)
+    {
+        $queryVars[] = 'my_page';
+        return $queryVars;
+    }
+
+    /**
+     * Templates
+     */
+    public function setTemplate($template)
+    {
+        $page = get_query_var('my_page');
+
+        if ($page == 'user') {
+            $this->scripts();
+            include(plugin_dir_path(__FILE__) . '/../templates/users.php');
+            die();
+            return;
+        } else {
+            return $template;
         }
     }
 
-    public function inpsydeChallegeFrontend()
+    /**
+     * Enqueue Scripts
+     */
+    protected function scripts()
     {
-        $this->scripts();
-        ?>
-
-        <div class="inpsyde-challenge">
-            <h1 class="inpsyde-challenge__title"><?php esc_html_e('Users Table', 'inpsydechallenge'); ?></h1>
-            <div class="inpsyde-challenge__table-wrapper js-inpsyde-challenge">
-                <div class="inpsyde-challenge__table-header">
-                    <span class="inpsyde-challenge__col">ID</span>
-                    <span class="inpsyde-challenge__col">Name</span>
-                    <span class="inpsyde-challenge__col">Username</span>
-                </div>
-            </div>
-            <div class="inpsyde-challenge__modal js-user-modal">
-                <div class="inpsyde-challenge__modal-wrapper">
-                    <button class="inpsyde-challenge__modal-closebtn js-user-modal-close">X</button>
-                    <h4 class="js-user-name"></h4>
-                    <h5 class="js-user-username"></h5>
-                    <h6 class="inpsyde-challenge__job js-user-job"></h6>
-                    <div class="inpsyde-challenge__modal-contact">
-                        <a class="js-user-website" href="" target="_blank">Website</a>
-                        <a class="js-user-phone" href="">Phone</a>
-                        <a class="js-user-email" href="">Email</a>
-                    </div>
-                    <p class="inpsyde-challenge__modal-address js-user-address"></p>
-                </div>
-            </div>
-        </div>
-
-        <?php
+        wp_enqueue_script(
+            'inpsyde-challenge-functions',
+            plugins_url('../assets/build/inpsyde-challenge.min.js', __FILE__),
+            null,
+            '1.0',
+            true
+        );
+        wp_localize_script(
+            'inpsyde-challenge-functions',
+            'inpsydeChallenge',
+            [
+                'rootapiurl' => esc_url_raw(rest_url()),
+                'nonce' => wp_create_nonce('wp_rest'),
+            ]
+        );
+        wp_enqueue_style(
+            'inpsyde-challenge-styles',
+            plugins_url('../assets/build/inpsyde-challenge.min.css', __FILE__),
+            null,
+            '1.0'
+        );
     }
 }
-
-?>

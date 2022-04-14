@@ -18,9 +18,7 @@
             "name": "Facundo Gamond"
         }
     ],
-    "require": {
-        "guzzlehttp/guzzle": "^7.0"
-    },
+    "require": {},
     "require-dev": {
         "inpsyde/php-coding-standards": "^1.0",
         "brain/monkey": "~2.0.0",
