@@ -33,9 +33,15 @@ class RestApiUsers
 
     public function allUsersResponse(): ?WP_REST_Response
     {
-        $users = json_decode((string) wp_remote_get('https://jsonplaceholder.typicode.com/users')['body'], true);
+        $request = wp_remote_get('https://jsonplaceholder.typicode.com/users');
+        $response = $request['response'];
+        $body = json_decode((string) $request['body'], true);
 
-        return CacheManage::WPREST($this->buildTableGrid($users));
+        if ($response['code'] != 200) {
+            return CacheManage::WPREST($response);
+        }
+
+        return CacheManage::WPREST($this->buildTableGrid($body));
     }
 
     /**
@@ -66,12 +72,15 @@ class RestApiUsers
 
     public function userDetailResponse(object $data): ?WP_REST_Response
     {
-        // Get id param
         $id = $data['id'];
+        $request = wp_remote_get("https://jsonplaceholder.typicode.com/users/{$id}");
+        $response = $request['response'];
+        $body = json_decode((string) $request['body'], true);
 
-        // Get user data
-        $userDetails = json_decode((string) wp_remote_get("https://jsonplaceholder.typicode.com/users/{$id}")['body'], true);
+        if ($response['code'] != 200) {
+            return CacheManage::WPREST($response);
+        }
 
-        return CacheManage::WPREST($userDetails);
+        return CacheManage::WPREST($body);
     }
 }
