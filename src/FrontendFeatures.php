@@ -10,7 +10,7 @@ class FrontendFeatures
     {
         add_action('init', [$this, 'rewriteRules']);
         add_filter('query_vars', [$this, 'queryVars']);
-        add_action('template_include', [$this, 'setTemplate']);
+        add_action('template_include', [$this, 'template']);
     }
 
     /**
@@ -18,14 +18,16 @@ class FrontendFeatures
      */
     public function rewriteRules()
     {
-        add_rewrite_rule('users/?$', 'index.php?my_page=user', 'top');
+        add_rewrite_rule('inpsyde-challenge/?$', 'index.php?my_page=inpsyde-challenge', 'top');
         flush_rewrite_rules();
     }
 
     /**
      * Adding query vars
+     * @param array $queryVars
+     * @return array
      */
-    public function queryVars($queryVars)
+    public function queryVars(array $queryVars): array
     {
         $queryVars[] = 'my_page';
         return $queryVars;
@@ -33,19 +35,18 @@ class FrontendFeatures
 
     /**
      * Templates
+     * @param string $template
+     * @return string
      */
-    public function setTemplate($template)
+    public function template(string $template): string
     {
         $page = get_query_var('my_page');
 
-        if ($page == 'user') {
+        if ($page === 'inpsyde-challenge') {
             $this->scripts();
-            include(plugin_dir_path(__FILE__) . '/../templates/users.php');
-            die();
-            return;
-        } else {
-            return $template;
+            return include(plugin_dir_path(__FILE__) . '/../templates/users.php');
         }
+        return $template;
     }
 
     /**

@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Facundogamond\InpsydeChallenge;
 
+/**
+ * Response for user details
+ * @param mixed $data
+ * @return object
+ */
 class CacheManage
 {
     // phpcs:disable

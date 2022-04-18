@@ -6,10 +6,10 @@ The main idea of this plugin is that to return on the frontend a table of users 
 - Run `composer install` in order to install required dependences.
 
 ## Usage
-After install this plugin, the route `/users` must be available without save permalinks.
+After install this plugin, the route `/inpsyde-challenge` must be available without save permalinks.
 
 ## Code Standards and Unit Testing
-- Run `vendor/bin/phpcs --standard="Inpsyde" ./src/ ./inpsyde-challenge.php ./tests` in order to check code standards.
+- Run `vendor/bin/phpcs --standard="Inpsyde" ./src/ ./inpsyde-challenge.php ./tests ./templates` in order to check code standards.
 - Run `vendor/phpunit/phpunit/phpunit tests/` to execute unit tests.
 
 ## Features

@@ -1,3 +1,10 @@
+<?php // phpcs:disable
+/**
+ * Table ajax template
+ */
+
+?>
+
 <div class="inpsyde-challenge__table">
 
     <?php foreach ($users as $user) : ?>

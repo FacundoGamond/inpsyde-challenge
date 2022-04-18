@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Facundogamond\InpsydeChallenge;
 
 use Facundogamond\InpsydeChallenge\CacheManage;
-use WP_REST_Response;
 
 class RestApiUsers
 {
@@ -31,14 +30,22 @@ class RestApiUsers
         );
     }
 
-    public function allUsersResponse()/*: ?WP_REST_Response*/
+    /**
+     * Response for all users
+     * @return object
+     */
+    public function allUsersResponse(): object
     {
         $request = wp_remote_get('https://jsonplaceholder.typicode.com/users');
         $response = $request['response'];
         $body = json_decode((string) $request['body'], true);
 
-        if ($response['code'] != 200) {
-            return new \WP_Error(__('Error', 'inpsydechallenge'), __($response['message'], 'inpsydechallenge'), ['status' => $response['code']]);
+        if ($response['code'] !== 200) {
+            return new \WP_Error(
+                __('Error', 'inpsydechallenge'),
+                $response['message'],
+                ['status' => $response['code']]
+            );
         }
 
         return CacheManage::WPREST($this->buildTableGrid($body));
@@ -46,6 +53,8 @@ class RestApiUsers
 
     /**
      * Build html table
+     * @param array $users
+     * @return string
      */
     protected function buildTableGrid(array $users): ?string
     {
@@ -70,15 +79,23 @@ class RestApiUsers
         );
     }
 
-    public function userDetailResponse(object $data)/*: ?WP_REST_Response*/
+    /**
+     * Response for user details
+     * @return object
+     */
+    public function userDetailResponse(object $data): object
     {
         $id = $data->get_params()['id'];
         $request = wp_remote_get("https://jsonplaceholder.typicode.com/users/{$id}");
         $response = $request['response'];
         $body = json_decode((string) $request['body'], true);
 
-        if ($response['code'] != 200) {
-            return new \WP_Error(__('Error', 'inpsydechallenge'), __($response['message'], 'inpsydechallenge'), ['status' => $response['code']]);
+        if ($response['code'] !== 200) {
+            return new \WP_Error(
+                __('Error', 'inpsydechallenge'),
+                $response['message'],
+                ['status' => $response['code']]
+            );
         }
 
         return CacheManage::WPREST($body);

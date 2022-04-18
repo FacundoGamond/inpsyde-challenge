@@ -1,5 +1,4 @@
-<?php
-
+<?php // phpcs:disable
 /**
  * The template for displaying all users
  */
@@ -22,9 +21,15 @@ get_header(); ?>
             <h5 class="js-user-username"></h5>
             <h6 class="inpsyde-challenge__job js-user-job"></h6>
             <div class="inpsyde-challenge__modal-contact">
-                <a class="js-user-website" href="" target="_blank"><?php esc_html_e('Website', 'inpsydechallenge'); ?></a>
-                <a class="js-user-phone" href=""><?php esc_html_e('Phone', 'inpsydechallenge'); ?></a>
-                <a class="js-user-email" href=""><?php esc_html_e('Email', 'inpsydechallenge'); ?></a>
+                <a class="js-user-website" href="" target="_blank">
+                    <?php esc_html_e('Website', 'inpsydechallenge'); ?>
+                </a>
+                <a class="js-user-phone" href="">
+                    <?php esc_html_e('Phone', 'inpsydechallenge'); ?>
+                </a>
+                <a class="js-user-email" href="">
+                    <?php esc_html_e('Email', 'inpsydechallenge'); ?>
+                </a>
             </div>
             <p class="inpsyde-challenge__modal-address js-user-address"></p>
         </div>
