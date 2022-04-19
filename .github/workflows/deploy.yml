@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  deploy_to_wpengine:
+  build_assets:
     name: Build Assets
     runs-on: ubuntu-latest
     steps:
