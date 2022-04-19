@@ -13,6 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - uses: actions/checkout@v2
+      - run: echo "Build branch - ${{github.ref}}"
+      - name: Set Build Env
+        run: |
+          echo "WP_ENV=inpsyde" >> $GITHUB_ENV
+        if: ${{ github.ref == 'refs/heads/master' }}
+
+
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
