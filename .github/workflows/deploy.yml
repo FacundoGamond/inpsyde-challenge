@@ -35,4 +35,5 @@ jobs:
           git config --global user.name "Facundo"
           git add .
           git commit -m "build assets"
+          git push
 
