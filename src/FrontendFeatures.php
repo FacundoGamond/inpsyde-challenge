@@ -44,6 +44,7 @@ class FrontendFeatures
 
         if ($page === 'inpsyde-challenge') {
             $this->scripts();
+            /** @noinspection PhpIncludeInspection */
             return include(plugin_dir_path(__FILE__) . '/../templates/users.php');
         }
         return $template;
