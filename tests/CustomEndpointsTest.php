@@ -17,5 +17,11 @@ class CustomEndpointsTest extends SetupMonkey
         self::assertNotFalse(
             add_action('rest_api_init', [ RestApiUsers::class, 'userDetailRoute' ])
         );
+        self::assertNotFalse(
+            [ RestApiUsers::class, 'allUsersResponse' ]
+        );
+        self::assertNotFalse(
+            [ RestApiUsers::class, 'userDetailResponse' ]
+        );
     }
 }
