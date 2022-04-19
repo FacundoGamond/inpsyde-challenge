@@ -12,12 +12,14 @@ jobs:
     name: Build Assets
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
 
       - name: Build static assets
         run: |
+          cd ..
           npm install
           npm run build
           git add .
