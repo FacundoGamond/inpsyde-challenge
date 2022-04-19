@@ -24,7 +24,7 @@ class InpsydeChallenge {
         this.clickEvents();
       })
       .catch(error => {
-        this.container.innerHTML = 'Opss! Something goes wrong...';
+        this.container.innerHTML = 'Opss!! Something goes wrong...';
         console.log(error);
       });
   }

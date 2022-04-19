@@ -33,7 +33,11 @@ jobs:
           npm run build
           git config --global user.email "facugamond@hotmail.com"
           git config --global user.name "Facundo"
+          if [ -z "$(git status --porcelain)" ]; then 
+          # Working directory clean
+          else 
           git add .
           git commit -m "build assets"
           git push
+          fi
 
