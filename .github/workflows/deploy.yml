@@ -24,8 +24,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
 
       - name: Build static assets
         run: |
-          ls -la
+          npm install
+          npm run build
+          git add .
+          git commit -m "build assets"
 
