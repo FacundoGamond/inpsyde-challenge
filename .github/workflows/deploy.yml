@@ -19,9 +19,5 @@ jobs:
 
       - name: Build static assets
         run: |
-          cd ..
-          npm install
-          npm run build
-          git add .
-          git commit -m "build assets"
+          ls -la
 
